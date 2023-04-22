@@ -18,7 +18,7 @@ function Icon({
       {...props}
       fill={fill}
       stroke={stroke}
-      className={clsx('w-5 h-5', className)}
+      className={clsx('w-8 h-8', className)}
     >
       {children}
     </svg>
@@ -113,7 +113,7 @@ export function IconCaret({
   return (
     <Icon
       {...props}
-      className={`w-5 h-5 transition ${rotate}`}
+      className={`w-8 h-8 transition ${rotate}`}
       fill="transparent"
       stroke={stroke}
     >

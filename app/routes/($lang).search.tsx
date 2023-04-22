@@ -148,7 +148,7 @@ export default function Search() {
   );
 }
 
-const SEARCH_QUERY = `#graphql
+const SEARCH_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query search(
     $searchTerm: String
@@ -198,7 +198,7 @@ export async function getNoResultRecommendations(
   };
 }
 
-const SEARCH_NO_RESULTS_QUERY = `#graphql
+const SEARCH_NO_RESULTS_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query searchNoResult(
     $country: CountryCode

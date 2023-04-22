@@ -123,13 +123,13 @@ export default function Product() {
   return (
     <>
       <Section className="px-0 md:px-8 lg:px-12 bg-contrast">
-        <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start md:gap-6 lg:gap-12 md:grid-cols-2 lg:grid-cols-3">
           <ProductGallery
             media={media.nodes}
             className="w-full lg:col-span-2"
           />
           <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-            <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+            <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-2xl md:px-0">
               <div className="grid gap-2">
                 <Heading as="h1" className="whitespace-normal">
                   {title}
@@ -327,7 +327,7 @@ function ProductOptions({
                * If there are more than 7 values, we render a dropdown.
                * Otherwise, we just render plain links.
                */}
-              {option.values.length > 7 ? (
+              {option.values.length > 4 ? (
                 <div className="relative w-full">
                   <Listbox>
                     {({open}) => (
@@ -401,7 +401,7 @@ function ProductOptions({
                           optionValue={value}
                           searchParams={searchParamsWithDefaults}
                           className={clsx(
-                            'leading-none py-1 border-b-[1.5px] cursor-pointer transition-all duration-200',
+                            'leading-none text-fine py-1 border-b-[1.5px] cursor-pointer transition-all duration-200',
                             checked ? 'border-primary/50' : 'border-primary/0',
                           )}
                         />

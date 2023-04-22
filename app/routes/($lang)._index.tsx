@@ -6,7 +6,9 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import type {
+  Collection,
   CollectionConnection,
+  Product,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
 import {AnalyticsPageType} from '@shopify/hydrogen';
@@ -62,16 +64,6 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
-      secondaryHero: context.storefront.query<{hero: CollectionHero}>(
-        COLLECTION_HERO_QUERY,
-        {
-          variables: {
-            handle: 'premium-loose-leaf-tea-box',
-            country,
-            language,
-          },
-        },
-      ),
       featuredCollections: context.storefront.query<{
         collections: CollectionConnection;
       }>(FEATURED_COLLECTIONS_QUERY, {
@@ -104,13 +96,8 @@ export async function loader({params, context}: LoaderArgs) {
 }
 
 export default function Homepage() {
-  const {
-    primaryHero,
-    secondaryHero,
-    tertiaryHero,
-    featuredCollections,
-    featuredProducts,
-  } = useLoaderData<typeof loader>();
+  const {primaryHero, featuredCollections, featuredProducts} =
+    useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
@@ -128,22 +115,11 @@ export default function Homepage() {
               if (!products?.nodes) return <></>;
               return (
                 <ProductSwimlane
-                  products={products.nodes}
+                  products={products.nodes as Product[]}
                   title="New & Tasty"
                   count={4}
                 />
               );
-            }}
-          </Await>
-        </Suspense>
-      )}
-
-      {secondaryHero && (
-        <Suspense fallback={<Hero {...skeletons[1]} />}>
-          <Await resolve={secondaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
             }}
           </Await>
         </Suspense>
@@ -156,21 +132,10 @@ export default function Homepage() {
               if (!collections?.nodes) return <></>;
               return (
                 <FeaturedCollections
-                  collections={collections.nodes}
+                  collections={collections.nodes as Collection[]}
                   title="Collections"
                 />
               );
-            }}
-          </Await>
-        </Suspense>
-      )}
-
-      {tertiaryHero && (
-        <Suspense fallback={<Hero {...skeletons[2]} />}>
-          <Await resolve={tertiaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
             }}
           </Await>
         </Suspense>

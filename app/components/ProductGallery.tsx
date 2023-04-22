@@ -36,7 +36,7 @@ export function ProductGallery({
 
         const style = [
           isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
-          isFirst || isFourth ? '' : 'md:aspect-[4/5]',
+          isFirst || isFourth ? '' : 'md:aspect-[1/1]',
           'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-full',
         ].join(' ');
 
@@ -50,7 +50,7 @@ export function ProductGallery({
               <Image
                 loading={i === 0 ? 'eager' : 'lazy'}
                 data={data.image!}
-                aspectRatio={!isFirst && !isFourth ? '4/5' : undefined}
+                aspectRatio={!isFirst && !isFourth ? '1/1' : undefined}
                 sizes={
                   isFirst || isFourth
                     ? '(min-width: 48em) 60vw, 90vw'

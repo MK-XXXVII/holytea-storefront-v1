@@ -166,7 +166,7 @@ export default function Collection() {
   );
 }
 
-const COLLECTION_QUERY = `#graphql
+const COLLECTION_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query CollectionDetails(
     $handle: String!

@@ -32,7 +32,7 @@ export async function getFeaturedData(
   };
 }
 
-const FEATURED_QUERY = `#graphql
+const FEATURED_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query homepage($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {

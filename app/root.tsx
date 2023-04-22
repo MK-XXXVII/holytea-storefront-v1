@@ -206,7 +206,7 @@ export interface LayoutData {
 
 async function getLayoutData({storefront}: AppLoadContext) {
   const HEADER_MENU_HANDLE = 'main-menu';
-  const FOOTER_MENU_HANDLE = 'footer';
+  const FOOTER_MENU_HANDLE = 'footer-1';
 
   const data = await storefront.query<LayoutData>(LAYOUT_QUERY, {
     variables: {

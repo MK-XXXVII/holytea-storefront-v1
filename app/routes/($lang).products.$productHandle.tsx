@@ -122,7 +122,7 @@ export default function Product() {
 
   return (
     <>
-      <Section className="px-0 md:px-8 lg:px-12">
+      <Section className="px-0 md:px-8 lg:px-12 bg-contrast">
         <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
           <ProductGallery
             media={media.nodes}
@@ -537,7 +537,7 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 `;
 
-const PRODUCT_QUERY = `#graphql
+const PRODUCT_QUERY = `#graphql 
   ${MEDIA_FRAGMENT}
   ${PRODUCT_VARIANT_FRAGMENT}
   query Product(
@@ -592,7 +592,7 @@ const PRODUCT_QUERY = `#graphql
   }
 `;
 
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
+const RECOMMENDED_PRODUCTS_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query productRecommendations(
     $productId: ID!

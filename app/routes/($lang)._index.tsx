@@ -38,7 +38,7 @@ export async function loader({params, context}: LoaderArgs) {
     hero: CollectionHero;
     shop: HomeSeoData;
   }>(HOMEPAGE_SEO_QUERY, {
-    variables: {handle: 'freestyle'},
+    variables: {handle: 'premium-loose-leaf-tea-box'},
   });
 
   const seo = seoPayload.home();
@@ -129,7 +129,7 @@ export default function Homepage() {
               return (
                 <ProductSwimlane
                   products={products.nodes}
-                  title="Featured Products"
+                  title="New & Tasty"
                   count={4}
                 />
               );
@@ -179,7 +179,7 @@ export default function Homepage() {
   );
 }
 
-const COLLECTION_CONTENT_FRAGMENT = `#graphql
+const COLLECTION_CONTENT_FRAGMENT = `#graphql 
   ${MEDIA_FRAGMENT}
   fragment CollectionContent on Collection {
     id
@@ -208,7 +208,7 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
   }
 `;
 
-const HOMEPAGE_SEO_QUERY = `#graphql
+const HOMEPAGE_SEO_QUERY = `#graphql 
   ${COLLECTION_CONTENT_FRAGMENT}
   query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
@@ -222,7 +222,7 @@ const HOMEPAGE_SEO_QUERY = `#graphql
   }
 `;
 
-const COLLECTION_HERO_QUERY = `#graphql
+const COLLECTION_HERO_QUERY = `#graphql 
   ${COLLECTION_CONTENT_FRAGMENT}
   query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
@@ -233,7 +233,7 @@ const COLLECTION_HERO_QUERY = `#graphql
 `;
 
 // @see: https://shopify.dev/api/storefront/2023-04/queries/products
-export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
+export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql 
   ${PRODUCT_CARD_FRAGMENT}
   query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
@@ -246,7 +246,7 @@ export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
 `;
 
 // @see: https://shopify.dev/api/storefront/2023-04/queries/collections
-export const FEATURED_COLLECTIONS_QUERY = `#graphql
+export const FEATURED_COLLECTIONS_QUERY = `#graphql 
   query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     collections(

@@ -296,7 +296,7 @@ function article({
   return {
     title: article?.seo?.title ?? article?.title,
     description: truncate(article?.seo?.description ?? ''),
-    titleTemplate: '%s | Journal',
+    titleTemplate: '%s | learn',
     url,
     media: {
       type: 'image',

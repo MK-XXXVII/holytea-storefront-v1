@@ -187,7 +187,7 @@ function MobileHeader({
       className={`${
         isHome
           ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
+          : 'bg-notice/80 text-primary'
       } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
@@ -211,8 +211,8 @@ function MobileHeader({
           <Input
             className={
               isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+                ? 'focus:border-contrast/50 dark:focus:border-primary/50'
+                : 'focus:border-primary/50'
             }
             type="search"
             variant="minisearch"

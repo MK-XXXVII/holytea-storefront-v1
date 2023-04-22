@@ -21,6 +21,7 @@ export {Hero} from './Hero';
 export {SortFilter} from './SortFilter';
 export {Grid} from './Grid';
 export {FeaturedProducts} from './FeaturedProducts';
+export {FeaturedArticles} from './FeaturedArticles';
 export {Pagination, getPaginationVariables, usePagination} from './Pagination';
 export {AddToCartButton} from './AddToCartButton';
 // Sue me

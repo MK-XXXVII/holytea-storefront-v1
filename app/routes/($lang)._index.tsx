@@ -1,11 +1,18 @@
 import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
-import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
+import {
+  ProductSwimlane,
+  FeaturedCollections,
+  FeaturedArticles,
+  Hero,
+} from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import type {
+  Article,
+  ArticleConnection,
   Collection,
   CollectionConnection,
   Product,
@@ -32,7 +39,7 @@ export async function loader({params, context}: LoaderArgs) {
     params.lang.toLowerCase() !== `${language}-${country}`.toLowerCase()
   ) {
     // If the lang URL param is defined, yet we still are on `EN-US`
-    // the the lang param must be invalid, send to the 404 page
+    // the lang param must be invalid, send to the 404 page
     throw new Response(null, {status: 404});
   }
 
@@ -72,16 +79,16 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
-      tertiaryHero: context.storefront.query<{hero: CollectionHero}>(
-        COLLECTION_HERO_QUERY,
-        {
-          variables: {
-            handle: 'premium-loose-leaf-tea-box',
-            country,
-            language,
-          },
+      featuredArticles: context.storefront.query<{
+        blog: {
+          articles: ArticleConnection;
+        };
+      }>(FEATURED_ARTICLES_QUERY, {
+        variables: {
+          country,
+          language,
         },
-      ),
+      }),
       analytics: {
         pageType: AnalyticsPageType.home,
       },
@@ -96,7 +103,7 @@ export async function loader({params, context}: LoaderArgs) {
 }
 
 export default function Homepage() {
-  const {primaryHero, featuredCollections, featuredProducts} =
+  const {primaryHero, featuredCollections, featuredProducts, featuredArticles} =
     useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
@@ -133,7 +140,23 @@ export default function Homepage() {
               return (
                 <FeaturedCollections
                   collections={collections.nodes as Collection[]}
-                  title="Collections"
+                  title="Check our Collections"
+                />
+              );
+            }}
+          </Await>
+        </Suspense>
+      )}
+
+      {featuredArticles && (
+        <Suspense>
+          <Await resolve={featuredArticles}>
+            {({blog}) => {
+              if (!blog?.articles?.nodes) return <></>;
+              return (
+                <FeaturedArticles
+                  articles={blog.articles.nodes as Article[]}
+                  title="Featured Articles"
                 />
               );
             }}
@@ -227,6 +250,27 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
           width
           height
           url
+        }
+      }
+    }
+  }
+`;
+
+// Add the featured articles query
+const FEATURED_ARTICLES_QUERY = `#graphql
+  query homepageFeaturedArticles($language: LanguageCode, $country: CountryCode) @inContext(language: $language, country: $country) {
+    blog(handle: "journal") {
+      articles(first: 3) {
+        nodes {
+          id
+          title
+          handle
+          image {
+            altText
+            width
+            height
+            url
+          }
         }
       }
     }

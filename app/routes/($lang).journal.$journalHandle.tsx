@@ -8,7 +8,7 @@ import {seoPayload} from '~/lib/seo.server';
 import styles from '../styles/custom-font.css';
 import {routeHeaders, CACHE_LONG} from '~/data/cache';
 
-const BLOG_HANDLE = 'learn';
+const BLOG_HANDLE = 'journal';
 
 export const headers = routeHeaders;
 

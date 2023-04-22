@@ -7,7 +7,7 @@ import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {CACHE_SHORT, routeHeaders} from '~/data/cache';
 
-const BLOG_HANDLE = 'learn';
+const BLOG_HANDLE = 'journal';
 
 export const headers = routeHeaders;
 
@@ -42,7 +42,7 @@ export const loader = async ({request, context: {storefront}}: LoaderArgs) => {
   const seo = seoPayload.blog({blog, url: request.url});
 
   return json(
-    {articles, seo},
+    {articles, blogTitle: blog.title, seo},
     {
       headers: {
         'Cache-Control': CACHE_SHORT,
@@ -52,11 +52,11 @@ export const loader = async ({request, context: {storefront}}: LoaderArgs) => {
 };
 
 export default function Journals() {
-  const {articles} = useLoaderData<typeof loader>();
+  const {articles, blogTitle} = useLoaderData<typeof loader>();
 
   return (
     <>
-      <PageHeader heading={BLOG_HANDLE} />
+      <PageHeader heading={blogTitle} className="max-w-lg" />
       <Section>
         <Grid as="ol" layout="blog">
           {articles.map((article, i) => (
@@ -83,22 +83,22 @@ function ArticleCard({
   loading?: HTMLImageElement['loading'];
 }) {
   return (
-    <li key={article.id}>
+    <li key={article.id} className="pb-8">
       <Link to={`/${blogHandle}/${article.handle}`}>
         {article.image && (
-          <div className="card-image aspect-[3/2]">
+          <div className="card-image aspect-[4/2]">
             <Image
               alt={article.image.altText || article.title}
               className="object-cover w-full"
               data={article.image}
-              aspectRatio="3/2"
+              aspectRatio="4/2"
               loading={loading}
               sizes="(min-width: 768px) 50vw, 100vw"
             />
           </div>
         )}
-        <h2 className="mt-4 font-medium">{article.title}</h2>
-        <span className="block mt-1">{article.publishedAt}</span>
+        <h2 className="mt-4 font-medium text-copy">{article.title}</h2>
+        <span className="block mt-1 text-right">{article.publishedAt}</span>
       </Link>
     </li>
   );

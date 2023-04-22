@@ -45,7 +45,7 @@ export function Layout({
           </a>
         </div>
         <Header
-          title={layout?.shop.name ?? 'Hydrogen'}
+          title={layout?.shop.name ?? 'HOLYTEA'}
           menu={layout?.headerMenu}
         />
         <main role="main" id="mainContent" className="flex-grow">
@@ -264,7 +264,7 @@ function DesktopHeader({
           : 'bg-contrast/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-4`}
     >
       <div className="flex gap-12">
         <Link className="font-bold" to="/" prefetch="intent">

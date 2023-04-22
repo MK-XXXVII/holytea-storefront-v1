@@ -256,7 +256,7 @@ function CartLineItem({line}: {line: CartLine}) {
 
           <div className="grid pb-2">
             {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
+              <Text color="primary" className="text-fine" key={option.name}>
                 {option.name}: {option.value}
               </Text>
             ))}
@@ -289,7 +289,7 @@ function ItemRemoveButton({lineIds}: {lineIds: CartLine['id'][]}) {
       />
       <input type="hidden" name="linesIds" value={JSON.stringify(lineIds)} />
       <button
-        className="flex items-center justify-center w-10 h-10 border rounded"
+        className="flex items-center justify-center w-10 h-10 border border-primary rounded-full"
         type="submit"
       >
         <span className="sr-only">Remove</span>
@@ -310,7 +310,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
       <label htmlFor={`quantity-${lineId}`} className="sr-only">
         Quantity, {quantity}
       </label>
-      <div className="flex items-center border rounded">
+      <div className="flex items-center border border-primary rounded-full">
         <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
           <button
             name="decrease-quantity"

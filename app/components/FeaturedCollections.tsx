@@ -17,7 +17,7 @@ export function FeaturedCollections({
   const items = collections.filter((item) => item.image).length;
 
   return (
-    <Section {...props} heading={title}>
+    <Section {...props} heading={title} className="bg-[#D1F1A3]">
       <Grid items={items}>
         {collections.map((collection) => {
           if (!collection?.image) {
@@ -26,13 +26,13 @@ export function FeaturedCollections({
           return (
             <Link key={collection.id} to={`/collections/${collection.handle}`}>
               <div className="grid gap-4">
-                <div className="card-image bg-primary/5 aspect-[3/2]">
+                <div className="card-image bg-primary/5 aspect-[1/1]">
                   {collection?.image && (
                     <Image
                       alt={`Image of ${collection.title}`}
                       data={collection.image}
                       sizes="(max-width: 32em) 100vw, 33vw"
-                      aspectRatio="3/2"
+                      aspectRatio="1/1"
                     />
                   )}
                 </div>

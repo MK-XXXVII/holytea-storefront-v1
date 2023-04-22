@@ -359,7 +359,7 @@ export async function cartRemove({
   return cartLinesRemove;
 }
 
-const LINES_UPDATE_MUTATION = `#graphql
+const LINES_UPDATE_MUTATION = `#graphql 
   ${LINES_CART_FRAGMENT}
   ${USER_ERROR_FRAGMENT}
   mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!, $language: LanguageCode, $country: CountryCode)

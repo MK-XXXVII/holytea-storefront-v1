@@ -70,18 +70,25 @@ export function Hero({
             </div>
           )}
         </div>
-        <div className="flex flex-col bg-primary/70 items-start max-w-fit justify-between gap-4 px-6 py-8 sm:px-12 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
+        <div className="flex flex-col bg-primary/70 items-start max-w-fit justify-between gap-8 px-6 py-8 sm:px-12 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
           {heading?.value && (
-            <Heading format as="h2" size="display" className="max-w-xl">
+            <Heading format as="h2" size="heading" className="max-w-xl">
               {heading.value}
             </Heading>
           )}
           {byline?.value && (
-            <Text format width="narrow" as="p" size="lead">
+            <Text format width="narrow" as="p" size="copy">
               {byline.value}
             </Text>
           )}
-          {cta?.value && <Text size="lead">{cta.value}</Text>}
+          {cta?.value && (
+            <Text
+              size="copy"
+              className="border px-4 py-2 rounded-full hover:bg-notice hover:text-primary hover:border-primary animate-bounce"
+            >
+              {cta.value}
+            </Text>
+          )}
         </div>
       </section>
     </Link>

@@ -286,6 +286,7 @@ export function ProductForm() {
             {!isOutOfStock && (
               <ShopPayButton
                 width="100%"
+                className="rounded-full"
                 variantIds={[selectedVariant?.id!]}
                 storeDomain={storeDomain}
               />

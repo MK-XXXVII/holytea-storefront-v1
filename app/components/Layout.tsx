@@ -261,7 +261,7 @@ function DesktopHeader({
       className={`${
         isHome
           ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
+          : 'bg-notice/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
       } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-4`}
@@ -279,7 +279,7 @@ function DesktopHeader({
               target={item.target}
               prefetch="intent"
               className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+                isActive ? 'pb-1 border-primary border-b-2 -mb-px' : 'pb-1'
               }
             >
               {item.title}
@@ -296,8 +296,8 @@ function DesktopHeader({
           <Input
             className={
               isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+                ? 'focus:border-primary/80 dark:focus:border-primary/80'
+                : 'focus:border-primary/80'
             }
             type="search"
             variant="minisearch"

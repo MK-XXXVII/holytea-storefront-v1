@@ -8,9 +8,9 @@ import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/utils';
 
-function getBuyerIp(request: Request): string | undefined {
+function getBuyerIp(request: Request): string | null {
   const forwardedFor = request.headers.get('x-forwarded-for');
-  return forwardedFor ? forwardedFor.split(',')[0].trim() : undefined;
+  return forwardedFor ? forwardedFor.split(',')[0].trim() : null;
 }
 
 /**
@@ -48,8 +48,10 @@ export default {
         storeDomain: `https://${env.PUBLIC_STORE_DOMAIN}`,
         storefrontApiVersion: env.PUBLIC_STOREFRONT_API_VERSION || '2023-04',
         storefrontId: env.PUBLIC_STOREFRONT_ID,
-        storefrontHeaders: getStorefrontHeaders(request),
-        buyerIp: getBuyerIp(request),
+        storefrontHeaders: {
+          ...getStorefrontHeaders(request),
+          buyerIp: getBuyerIp(request),
+        },
       });
 
       /**

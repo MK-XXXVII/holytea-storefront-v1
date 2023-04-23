@@ -238,7 +238,7 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
   query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     collections(
-      first: 4,
+      first: 8, query:"title:*-tea",
       sortKey: UPDATED_AT
     ) {
       nodes {
@@ -260,7 +260,7 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
 const FEATURED_ARTICLES_QUERY = `#graphql
   query homepageFeaturedArticles($language: LanguageCode, $country: CountryCode) @inContext(language: $language, country: $country) {
     blog(handle: "journal") {
-      articles(first: 3) {
+      articles(first: 4) {
         nodes {
           id
           title

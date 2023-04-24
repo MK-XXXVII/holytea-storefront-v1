@@ -9,6 +9,7 @@ interface ExtendedArticle extends Article {
 interface FeaturedArticlesProps {
   articles: ExtendedArticle[];
   title?: string;
+  tagline?: string;
   [key: string]: any;
 }
 
@@ -23,6 +24,7 @@ function truncateHtmlContent(content: string, maxWords: number): string {
 export function FeaturedArticles({
   articles,
   title = 'Featured Articles',
+  tagline,
   ...props
 }: FeaturedArticlesProps) {
   const haveArticles = articles && articles.length > 0;
@@ -32,6 +34,11 @@ export function FeaturedArticles({
 
   return (
     <Section {...props} heading={title} className="bg-[#BEBFEA]">
+      {tagline && (
+        <text className="text-left text-xl md:text-3xl text-primary/80 mb-4">
+          {tagline}
+        </text>
+      )}
       <Grid items={items}>
         {articles.map((article) => {
           if (!article?.image) {
@@ -52,7 +59,7 @@ export function FeaturedArticles({
                 </div>
                 <Heading size="copy">{article.title}</Heading>
                 <div
-                  className="prose prose-sm"
+                  className="prose prose-lg text-primary"
                   dangerouslySetInnerHTML={{
                     __html: truncateHtmlContent(article.contentHtml, 30), // Limit to 20 words
                   }}

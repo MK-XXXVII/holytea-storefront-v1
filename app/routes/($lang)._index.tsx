@@ -142,6 +142,7 @@ export default function Homepage() {
                 <FeaturedCollections
                   collections={collections.nodes as Collection[]}
                   title="Check our Collections"
+                  tagline="Discover our curated selection of premium loose-leaf tea blends."
                 />
               );
             }}
@@ -158,6 +159,7 @@ export default function Homepage() {
                 <FeaturedArticles
                   articles={blog.articles.nodes as Article[]}
                   title="Featured Articles"
+                  tagline="Get the latest news and updates on our premium tea blends." // Add the tagline here
                 />
               );
             }}

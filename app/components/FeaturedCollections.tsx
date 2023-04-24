@@ -2,6 +2,13 @@ import {Image} from '@shopify/hydrogen';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Section, Grid, Link} from '~/components';
 
+interface FeaturedCollectionsProps {
+  collections: Collection[];
+  title?: string;
+  tagline?: string;
+  [key: string]: any;
+}
+
 function truncateWords(str: string, limit = 40) {
   const words = str.split(' ');
 
@@ -15,12 +22,9 @@ function truncateWords(str: string, limit = 40) {
 export function FeaturedCollections({
   collections,
   title = 'Collections',
+  tagline,
   ...props
-}: {
-  collections: Collection[];
-  title?: string;
-  [key: string]: any;
-}) {
+}: FeaturedCollectionsProps) {
   const haveCollections = collections && collections.length > 0;
   if (!haveCollections) return null;
 
@@ -28,6 +32,11 @@ export function FeaturedCollections({
 
   return (
     <Section {...props} heading={title} className="bg-[#D1F1A3]">
+      {tagline && (
+        <text className="text-left text-xl md:text-3xl text-primary/80 mb-4">
+          {tagline}
+        </text>
+      )}
       <Grid items={items}>
         {collections.map((collection) => {
           if (!collection?.image) {
@@ -47,7 +56,7 @@ export function FeaturedCollections({
                   )}
                 </div>
                 <Heading size="copy">{collection.title}</Heading>
-                <p className="text-sm text-gray-700">
+                <p className="text-md text-primary">
                   {truncateWords(collection.description)}
                 </p>
               </div>

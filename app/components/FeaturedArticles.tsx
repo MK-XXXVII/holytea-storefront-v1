@@ -2,10 +2,22 @@ import {Image} from '@shopify/hydrogen';
 import type {Article} from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Section, Grid, Link} from '~/components';
 
+interface ExtendedArticle extends Article {
+  contentHtml: string;
+}
+
 interface FeaturedArticlesProps {
-  articles: Article[];
+  articles: ExtendedArticle[];
   title?: string;
   [key: string]: any;
+}
+
+function truncateHtmlContent(content: string, maxWords: number): string {
+  const strippedText = content.replace(/(<([^>]+)>)/gi, '');
+  const words = strippedText.split(/\s+/);
+  const truncatedWords = words.slice(0, maxWords).join(' ');
+
+  return truncatedWords + (words.length > maxWords ? '...' : '');
 }
 
 export function FeaturedArticles({
@@ -39,6 +51,12 @@ export function FeaturedArticles({
                   )}
                 </div>
                 <Heading size="copy">{article.title}</Heading>
+                <div
+                  className="prose prose-sm"
+                  dangerouslySetInnerHTML={{
+                    __html: truncateHtmlContent(article.contentHtml, 30), // Limit to 20 words
+                  }}
+                />
               </div>
             </Link>
           );

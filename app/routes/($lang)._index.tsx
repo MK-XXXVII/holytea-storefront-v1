@@ -124,6 +124,7 @@ export default function Homepage() {
                 <ProductSwimlane
                   products={products.nodes as Product[]}
                   title="New & Tasty"
+                  tagline="Discover our freshly crafted tea blends for a delightful experience."
                   count={4}
                 />
               );
@@ -245,6 +246,7 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
         id
         title
         handle
+        description
         image {
           altText
           width
@@ -265,6 +267,7 @@ const FEATURED_ARTICLES_QUERY = `#graphql
           id
           title
           handle
+          contentHtml
           image {
             altText
             width

@@ -33,9 +33,9 @@ export function FeaturedCollections({
   return (
     <Section {...props} heading={title} className="bg-[#D1F1A3]">
       {tagline && (
-        <text className="text-left text-xl md:text-3xl text-primary/80 mb-4">
+        <p className="text-left text-xl md:text-3xl text-primary/80 mb-4">
           {tagline}
-        </text>
+        </p>
       )}
       <Grid items={items}>
         {collections.map((collection) => {

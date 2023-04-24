@@ -18,9 +18,9 @@ export function ProductSwimlane({
   return (
     <Section heading={title} padding="y" {...props} className="bg-[#BEBFEA]">
       {tagline && (
-        <text className="text-left text-xl md:text-3xl text-primary/80 mb-4 px-6 sm:px-12">
+        <p className="text-left text-xl md:text-3xl text-primary/80 mb-4 px-6 sm:px-12">
           {tagline}
-        </text>
+        </p>
       )}
       <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12">
         {products.map((product) => (

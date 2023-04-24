@@ -279,7 +279,7 @@ function DesktopHeader({
               target={item.target}
               prefetch="intent"
               className={({isActive}) =>
-                isActive ? 'pb-1 border-primary border-b-2 -mb-px' : 'pb-1'
+                isActive ? 'pb-1 border-contrast border-b-2 -mb-px' : 'pb-1'
               }
             >
               {item.title}

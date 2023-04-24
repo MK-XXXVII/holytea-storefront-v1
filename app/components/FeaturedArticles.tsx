@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 import type {Article} from '@shopify/hydrogen/storefront-api-types';
-import {Heading, Section, Grid, Link} from '~/components';
+import {Heading, Section, Grid, Link, Button} from '~/components';
 
 interface ExtendedArticle extends Article {
   contentHtml: string;
@@ -69,6 +69,11 @@ export function FeaturedArticles({
           );
         })}
       </Grid>
+      <div className="flex justify-center mt-6">
+        <Button as={Link} to="/journal" variant="primary" className="mt-6">
+          View All Articles
+        </Button>
+      </div>
     </Section>
   );
 }

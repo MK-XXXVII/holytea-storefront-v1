@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
-import {Heading, Section, Grid, Link} from '~/components';
+import {Heading, Section, Grid, Link, Button} from '~/components';
 
 interface FeaturedCollectionsProps {
   collections: Collection[];
@@ -64,6 +64,17 @@ export function FeaturedCollections({
           );
         })}
       </Grid>
+      <div className="flex justify-center mt-6">
+        <Button
+          as="a"
+          className="mt-2"
+          variant="primary"
+          width="auto"
+          href="/collections"
+        >
+          Explore All Collections
+        </Button>
+      </div>
     </Section>
   );
 }

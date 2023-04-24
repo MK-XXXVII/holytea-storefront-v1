@@ -1,5 +1,5 @@
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
-import {ProductCard, Section} from '~/components';
+import {ProductCard, Section, Button} from '~/components';
 
 const mockProducts = new Array(12).fill('');
 
@@ -30,6 +30,16 @@ export function ProductSwimlane({
             className="snap-start w-80"
           />
         ))}
+      </div>
+      <div className="flex justify-center mt-6">
+        <Button
+          as="a"
+          href="/products"
+          variant="secondary"
+          className="text-primary"
+        >
+          View All Products
+        </Button>
       </div>
     </Section>
   );

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import {useEffect, useId, useMemo} from 'react';
-import {useFetcher} from '@remix-run/react';
-import {Heading, ProductCard, Skeleton, Text} from '~/components';
+import {Link, useFetcher} from '@remix-run/react';
+import {Heading, ProductCard, Skeleton, Text, Button} from '~/components';
 import type {
   Product,
   ProductSortKeys,
@@ -70,6 +70,16 @@ export function FeaturedProducts({
           onClick={onClose}
           products={data?.products as Product[]}
         />
+      </div>
+      <div className="mt-6">
+        <Button
+          as={Link}
+          to="/products"
+          className="text-center"
+          variant="secondary"
+        >
+          View All Products
+        </Button>
       </div>
     </>
   );

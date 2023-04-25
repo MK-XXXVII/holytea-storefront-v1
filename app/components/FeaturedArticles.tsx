@@ -5,7 +5,6 @@ import {Heading, Section, Grid, Link, Button} from '~/components';
 interface ExtendedArticle extends Article {
   contentHtml: string;
 }
-
 interface FeaturedArticlesProps {
   articles: ExtendedArticle[];
   title?: string;
@@ -33,11 +32,11 @@ export function FeaturedArticles({
   const items = articles.filter((item) => item.image).length;
 
   return (
-    <Section {...props} heading={title} className="bg-[#BEBFEA]">
+    <Section {...props} heading={title}>
       {tagline && (
-        <text className="text-left text-xl md:text-3xl text-primary/80 mb-4">
+        <p className="text-left text-xl md:text-3xl text-primary/80 mb-4">
           {tagline}
-        </text>
+        </p>
       )}
       <Grid items={items}>
         {articles.map((article) => {
@@ -70,7 +69,7 @@ export function FeaturedArticles({
         })}
       </Grid>
       <div className="flex justify-center mt-6">
-        <Button as={Link} to="/journal" variant="primary" className="mt-6">
+        <Button as={Link} to="/journal" variant="secondary">
           View All Articles
         </Button>
       </div>

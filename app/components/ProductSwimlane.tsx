@@ -16,7 +16,7 @@ export function ProductSwimlane({
   count?: number;
 }) {
   return (
-    <Section heading={title} padding="y" {...props} className="bg-[#BEBFEA]">
+    <Section heading={title} padding="y" {...props}>
       {tagline && (
         <p className="text-left text-xl md:text-3xl text-primary/80 mb-4 px-6 sm:px-12">
           {tagline}
@@ -32,12 +32,7 @@ export function ProductSwimlane({
         ))}
       </div>
       <div className="flex justify-center mt-6">
-        <Button
-          as="a"
-          href="/products"
-          variant="secondary"
-          className="text-primary"
-        >
+        <Button as="a" href="/products" variant="secondary">
           View All Products
         </Button>
       </div>

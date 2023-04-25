@@ -1,3 +1,4 @@
+// improve the FeaturedCollections component to use the new Grid component
 import {Image} from '@shopify/hydrogen';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Section, Grid, Link, Button} from '~/components';
@@ -31,7 +32,7 @@ export function FeaturedCollections({
   const items = collections.filter((item) => item.image).length;
 
   return (
-    <Section {...props} heading={title} className="bg-[#D1F1A3]">
+    <Section {...props} heading={title}>
       {tagline && (
         <p className="text-left text-xl md:text-3xl text-primary/80 mb-4">
           {tagline}
@@ -65,13 +66,7 @@ export function FeaturedCollections({
         })}
       </Grid>
       <div className="flex justify-center mt-6">
-        <Button
-          as="a"
-          className="mt-2"
-          variant="primary"
-          width="auto"
-          href="/collections"
-        >
+        <Button as="a" variant="secondary" width="auto" href="/collections">
           Explore All Collections
         </Button>
       </div>

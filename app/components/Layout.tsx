@@ -318,6 +318,8 @@ function DesktopHeader({
   );
 }
 
+//update DesketoHeader function to include children menu items if they exist
+
 function AccountLink({className}: {className?: string}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;

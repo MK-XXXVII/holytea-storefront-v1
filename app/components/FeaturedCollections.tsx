@@ -1,4 +1,3 @@
-// improve the FeaturedCollections component to use the new Grid component
 import {Image} from '@shopify/hydrogen';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Section, Grid, Link, Button} from '~/components';
@@ -10,7 +9,9 @@ interface FeaturedCollectionsProps {
   [key: string]: any;
 }
 
-function truncateWords(str: string, limit = 40) {
+function truncateWords(str = '', limit = 40) {
+  if (!str) return '';
+
   const words = str.split(' ');
 
   if (words.length > limit) {

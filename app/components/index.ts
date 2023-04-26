@@ -26,3 +26,5 @@ export {Pagination, getPaginationVariables, usePagination} from './Pagination';
 export {AddToCartButton} from './AddToCartButton';
 // Sue me
 export * from './Icon';
+export * from './Header';
+export * from './Footer';

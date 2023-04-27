@@ -116,7 +116,7 @@ shop-pay-button {
     p,
     ul,
     li {
-      @apply mb-4 text-lg;
+      @apply mb-4 text-xl;
     }
     img {
       @apply md:-mx-8 lg:-mx-16;

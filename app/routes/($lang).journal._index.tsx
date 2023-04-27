@@ -6,6 +6,7 @@ import {Grid, PageHeader, Section, Link} from '~/components';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {CACHE_SHORT, routeHeaders} from '~/data/cache';
+import {truncateHtmlContent} from '~/lib/utils/truncateHtmlContent';
 
 const BLOG_HANDLE = 'journal';
 
@@ -98,7 +99,15 @@ function ArticleCard({
           </div>
         )}
         <h2 className="mt-4 font-medium text-copy">{article.title}</h2>
-        <span className="block mt-1 text-right">{article.publishedAt}</span>
+        <div
+          className="prose prose-lg text-primary"
+          dangerouslySetInnerHTML={{
+            __html: truncateHtmlContent(article.contentHtml, 30),
+          }}
+        />
+        <span className="block mt-1 text-right font-semibold">
+          {article.publishedAt}
+        </span>
       </Link>
     </li>
   );

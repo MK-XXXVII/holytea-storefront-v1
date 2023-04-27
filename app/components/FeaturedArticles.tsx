@@ -1,6 +1,7 @@
 import {Image} from '@shopify/hydrogen';
 import type {Article} from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Section, Grid, Link, Button} from '~/components';
+import {truncateHtmlContent} from '~/lib/utils/truncateHtmlContent';
 
 interface ExtendedArticle extends Article {
   contentHtml: string;
@@ -10,14 +11,6 @@ interface FeaturedArticlesProps {
   title?: string;
   tagline?: string;
   [key: string]: any;
-}
-
-function truncateHtmlContent(content: string, maxWords: number): string {
-  const strippedText = content.replace(/(<([^>]+)>)/gi, '');
-  const words = strippedText.split(/\s+/);
-  const truncatedWords = words.slice(0, maxWords).join(' ');
-
-  return truncatedWords + (words.length > maxWords ? '...' : '');
 }
 
 export function FeaturedArticles({

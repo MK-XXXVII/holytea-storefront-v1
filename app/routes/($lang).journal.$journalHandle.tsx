@@ -78,7 +78,7 @@ export default function Article() {
         )}
         <div
           dangerouslySetInnerHTML={{__html: contentHtml}}
-          className="article"
+          className="article min-w-0 mx-auto mt-8 md:mt-16 max-w-5xl"
         />
       </Section>
     </>

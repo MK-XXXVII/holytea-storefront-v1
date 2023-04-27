@@ -25,11 +25,11 @@ export function Grid({
       items >= 4 && 'lg:grid-cols-4'
     }`,
     auto: 'auto-cols-auto',
-    blog: 'grid-cols-1 md:grid-cols-2',
+    blog: 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
   };
 
   const gaps = {
-    default: 'grid gap-4 gap-y-4 md:gap-6 lg:gap-8',
+    default: 'grid gap-4 gap-y-4 md:gap-6 xl:gap-8',
     blog: 'grid gap-6',
   };
 

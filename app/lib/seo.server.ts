@@ -30,9 +30,9 @@ function root({
 }): SeoConfig<Organization> {
   return {
     title: shop?.name,
-    titleTemplate: '%s | Holy Tea Amsterdam',
+    titleTemplate: 'Enjoy the Tea Experience | Holy Tea Amsterdam',
     description: truncate(shop?.description ?? ''),
-    handle: '@shopify',
+    handle: '@holyteanl',
     url,
     robots: {
       noIndex: false,
@@ -44,11 +44,11 @@ function root({
       name: shop.name,
       logo: shop.brand?.logo?.image?.url,
       sameAs: [
-        'https://twitter.com/shopify',
-        'https://facebook.com/shopify',
-        'https://instagram.com/shopify',
-        'https://youtube.com/shopify',
-        'https://tiktok.com/@shopify',
+        'https://twitter.com/holyteanl',
+        'https://facebook.com/holyteanl',
+        'https://instagram.com/holyteanl',
+        'https://youtube.com/@holyteanl',
+        'https://tiktok.com/@holyteanl',
       ],
       url,
       potentialAction: {
@@ -63,7 +63,7 @@ function root({
 function home(): SeoConfig<WebPage> {
   return {
     title: 'Home',
-    titleTemplate: '%s | Holy Tea Amsterdam',
+    titleTemplate: 'Enjoy the Tea Experience | Holy Tea Amsterdam',
     description: 'The best place to buy Loose-leaf Tea Blends',
     robots: {
       noIndex: false,

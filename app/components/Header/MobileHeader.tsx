@@ -5,6 +5,7 @@ import {Link} from '../Link';
 import {Heading} from '../Text';
 import {AccountLink} from './AccountLink';
 import {CartCount} from './CartCount';
+import {FaLeaf} from '@react-icons/all-files/fa/FaLeaf';
 
 export function MobileHeader({
   title,
@@ -63,11 +64,12 @@ export function MobileHeader({
       </div>
 
       <Link
-        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+        className="flex items-center uppercase leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
         to="/"
       >
+        <FaLeaf className="w-8 h-8 pr-1" />
         <Heading
-          className="font-bold text-center leading-none"
+          className="font-bold text-center text-lg leading-none flex-none"
           as={isHome ? 'h1' : 'h2'}
         >
           {title}

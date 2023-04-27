@@ -9,6 +9,7 @@ import {Input} from '../Input';
 import {IconSearch} from '../Icon';
 import {AccountLink} from './AccountLink';
 import {CartCount} from './CartCount';
+import {FaLeaf} from '@react-icons/all-files/fa/FaLeaf';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
@@ -39,7 +40,12 @@ export function DesktopHeader({
       } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-4`}
     >
       <div className="flex gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
+        <Link
+          className="font-bold text-2xl uppercase tracking-tighter inline-flex items-center"
+          to="/"
+          prefetch="intent"
+        >
+          <FaLeaf className="w-8 h-8 mr-2" />
           {title}
         </Link>
         <nav className="flex gap-8 items-center">

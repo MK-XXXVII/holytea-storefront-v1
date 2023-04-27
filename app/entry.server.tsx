@@ -1,3 +1,9 @@
+// q: What is this file?
+// a: This is the entry point for the server-side rendering of your app.
+//    It is run in a Node.js environment, and is responsible for rendering
+//    the initial HTML of your app, as well as responding to requests for
+//    data from the browser.
+
 import type {EntryContext} from '@shopify/remix-oxygen';
 import {RemixServer} from '@remix-run/react';
 import isbot from 'isbot';

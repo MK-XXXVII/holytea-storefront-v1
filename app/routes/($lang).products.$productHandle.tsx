@@ -117,7 +117,8 @@ export async function loader({params, request, context}: LoaderArgs) {
 
 export default function Product() {
   const {product, shop, recommended} = useLoaderData<typeof loader>();
-  const {media, title, vendor, descriptionHtml} = product;
+  const {media, title, vendor, descriptionHtml, metafield, secondMetafield} =
+    product;
   const {shippingPolicy, refundPolicy} = shop;
 
   return (
@@ -144,6 +145,18 @@ export default function Product() {
                   <ProductDetail
                     title="Product Details"
                     content={descriptionHtml}
+                  />
+                )}
+                {metafield && ( // Check if metafield exists
+                  <ProductDetail
+                    title="Ingredients" // Give it an appropriate title
+                    content={metafield.value} // Access the value of metafield here
+                  />
+                )}
+                {secondMetafield && (
+                  <ProductDetail
+                    title="Nutritional Information"
+                    content={secondMetafield.value}
                   />
                 )}
                 {shippingPolicy?.body && (
@@ -538,7 +551,7 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 `;
 
-const PRODUCT_QUERY = `#graphql 
+const PRODUCT_QUERY = `#graphql
   ${MEDIA_FRAGMENT}
   ${PRODUCT_VARIANT_FRAGMENT}
   query Product(
@@ -570,6 +583,12 @@ const PRODUCT_QUERY = `#graphql
         nodes {
           ...ProductVariantFragment
         }
+      }
+      metafield(namespace: "custom", key: "ingredients") {
+        value
+      }
+      secondMetafield: metafield(namespace: "custom", key: "nutritional_value") {
+        value
       }
       seo {
         description

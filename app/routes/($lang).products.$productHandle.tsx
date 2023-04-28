@@ -39,11 +39,19 @@ import type {
   Product as ProductType,
   Shop,
   ProductConnection,
+  Metafield,
+  Maybe,
 } from '@shopify/hydrogen/storefront-api-types';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import type {Storefront} from '~/lib/type';
 import type {Product} from 'schema-dts';
 import {routeHeaders, CACHE_SHORT} from '~/data/cache';
+
+interface ProductTypeWithMetafields extends ProductType {
+  __typename?: 'Product';
+  metafield?: Maybe<Metafield>;
+  secondMetafield?: Maybe<Metafield>;
+}
 
 export const headers = routeHeaders;
 
@@ -59,7 +67,7 @@ export async function loader({params, request, context}: LoaderArgs) {
   });
 
   const {shop, product} = await context.storefront.query<{
-    product: ProductType & {selectedVariant?: ProductVariant};
+    product: ProductTypeWithMetafields & {selectedVariant?: ProductVariant};
     shop: Shop;
   }>(PRODUCT_QUERY, {
     variables: {
@@ -116,7 +124,11 @@ export async function loader({params, request, context}: LoaderArgs) {
 }
 
 export default function Product() {
-  const {product, shop, recommended} = useLoaderData<typeof loader>();
+  const {product, shop, recommended} = useLoaderData<{
+    product: ProductTypeWithMetafields;
+    shop: Shop;
+    recommended: any;
+  }>();
   const {media, title, vendor, descriptionHtml, metafield, secondMetafield} =
     product;
   const {shippingPolicy, refundPolicy} = shop;

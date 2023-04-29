@@ -51,6 +51,7 @@ interface ProductTypeWithMetafields extends ProductType {
   __typename?: 'Product';
   metafield?: Maybe<Metafield>;
   secondMetafield?: Maybe<Metafield>;
+  thirdMetafield?: Maybe<Metafield>;
 }
 
 export const headers = routeHeaders;
@@ -129,8 +130,15 @@ export default function Product() {
     shop: Shop;
     recommended: any;
   }>();
-  const {media, title, vendor, descriptionHtml, metafield, secondMetafield} =
-    product;
+  const {
+    media,
+    title,
+    vendor,
+    descriptionHtml,
+    metafield,
+    secondMetafield,
+    thirdMetafield,
+  } = product;
   const {shippingPolicy, refundPolicy} = shop;
 
   return (
@@ -169,6 +177,12 @@ export default function Product() {
                   <ProductDetail
                     title="Nutritional Information"
                     content={secondMetafield.value}
+                  />
+                )}
+                {thirdMetafield && (
+                  <ProductDetail
+                    title="Tea Brewing Guide"
+                    content={thirdMetafield.value}
                   />
                 )}
                 {shippingPolicy?.body && (
@@ -600,6 +614,9 @@ const PRODUCT_QUERY = `#graphql
         value
       }
       secondMetafield: metafield(namespace: "custom", key: "nutritional_value") {
+        value
+      }
+      thirdMetafield: metafield(namespace: "custom", key: "guide") {
         value
       }
       seo {

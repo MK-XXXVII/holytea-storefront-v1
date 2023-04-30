@@ -354,10 +354,10 @@ function ProductOptions({
             key={option.name}
             className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0"
           >
-            <Heading as="legend" size="lead" className="min-w-[4rem]">
+            <Heading as="legend" size="lead" className="min-w-[4rem] mb-8">
               {option.name}
             </Heading>
-            <div className="flex flex-wrap items-baseline gap-4">
+            <div className="flex flex-wrap items-baseline gap-3 mb-8 lg:mb-12">
               {/**
                * First, we render a bunch of <Link> elements for each option value.
                * When the user clicks one of these buttons, it will hit the loader
@@ -440,8 +440,10 @@ function ProductOptions({
                           optionValue={value}
                           searchParams={searchParamsWithDefaults}
                           className={clsx(
-                            'leading-none text-fine py-1 border-b-[1.5px] cursor-pointer transition-all duration-200',
-                            checked ? 'border-primary/50' : 'border-primary/0',
+                            'leading-none text-fine font-semibold py-1 px-4 border-2 rounded-full cursor-pointer transition-all duration-200',
+                            checked
+                              ? 'border-primary bg-notice'
+                              : 'border-primary/50 bg-notice/50',
                           )}
                         />
                       </Text>

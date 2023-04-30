@@ -27,7 +27,7 @@ export function FeaturedArticles({
   return (
     <Section {...props} heading={title}>
       {tagline && (
-        <p className="text-left text-xl md:text-3xl text-primary/80 mb-4">
+        <p className="text-left text-xl md:text-2xl max-w-7xl text-primary/80 mb-4">
           {tagline}
         </p>
       )}

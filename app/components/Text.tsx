@@ -7,7 +7,7 @@ export function Text({
   className,
   color = 'default',
   format,
-  size = 'fine',
+  size = 'copy',
   width = 'default',
   children,
   ...props
@@ -17,7 +17,7 @@ export function Text({
   color?: 'default' | 'primary' | 'subtle' | 'notice' | 'contrast';
   format?: boolean;
   size?: 'lead' | 'copy' | 'fine';
-  width?: 'default' | 'narrow' | 'wide';
+  width?: 'default' | 'narrow' | 'wide' | 'maxw7xl';
   children: React.ReactNode;
   [key: string]: any;
 }) {
@@ -39,6 +39,7 @@ export function Text({
     default: 'max-w-prose',
     narrow: 'max-w-prose-narrow',
     wide: 'max-w-prose-wide',
+    maxw7xl: 'max-w-7xl',
   };
 
   const styles = clsx(

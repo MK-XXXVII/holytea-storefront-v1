@@ -24,6 +24,8 @@ export {FeaturedProducts} from './FeaturedProducts';
 export {FeaturedArticles} from './FeaturedArticles';
 export {Pagination, getPaginationVariables, usePagination} from './Pagination';
 export {AddToCartButton} from './AddToCartButton';
+export {SocialMedia} from './SocialMedia';
+export {Testimonials} from './Testimonials';
 // Sue me
 export * from './Icon';
 export * from './Header';

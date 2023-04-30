@@ -141,7 +141,7 @@ export default function Collection() {
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
-              <Text format width="wide" as="p" className="inline-block">
+              <Text format width="maxw7xl" as="p" className="inline-block">
                 {collection.description}
               </Text>
             </div>

@@ -18,7 +18,7 @@ export function ProductSwimlane({
   return (
     <Section heading={title} padding="y" {...props}>
       {tagline && (
-        <p className="text-left text-xl md:text-3xl text-primary/80 mb-4 px-6 sm:px-12">
+        <p className="text-left max-w-7xl text-xl md:text-2xl text-primary/80 mb-4 px-6 sm:px-12">
           {tagline}
         </p>
       )}

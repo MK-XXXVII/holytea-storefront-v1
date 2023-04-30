@@ -10,8 +10,8 @@
   --font-size-fine: 1rem; /* text-xs */
   --font-size-copy: 1.25rem; /* text-base */
   --font-size-lead: 1.5rem; /* text-lg */
-  --font-size-heading: 3rem; /* text-2xl */
-  --font-size-display: 4rem; /* text-4xl */
+  --font-size-heading: 2rem; /* text-2xl */
+  --font-size-display: 3rem; /* text-4xl */
   --color-shop-pay: #5a31f4;
   --shop-pay-button--width: 100%; /* Sets the width for the shop-pay-button web component */
   --height-nav: 3rem;

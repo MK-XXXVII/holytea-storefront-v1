@@ -7,7 +7,7 @@ export function Text({
   className,
   color = 'default',
   format,
-  size = 'copy',
+  size = 'fine',
   width = 'default',
   children,
   ...props

@@ -315,7 +315,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:text-primary/10"
+            className="w-10 h-8 transition text-primary hover:text-primary disabled:text-primary/10"
             value={prevQuantity}
             disabled={quantity <= 1}
           >

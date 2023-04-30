@@ -107,6 +107,7 @@ export default function Homepage() {
     useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
+
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (

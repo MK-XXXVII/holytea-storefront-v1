@@ -36,7 +36,7 @@ export function SocialMedia({
 }: SocialMediaProps) {
   return (
     <div
-      className={`grid md:grid-cols-3 grid-cols-1 px-12 py-8 bg-notice items-center gap-4 mx-12 border-primary border-2 mb-8 rounded-md ${className}`}
+      className={`grid grid-cols-1 md:grid-cols-3 px-4 py-8 bg-notice items-center gap-4 mx-12 border-primary border-2 mb-8 rounded-md ${className}`}
     >
       <div className="md:col-span-2 md:border-r-2 md:border-primary">
         {headline && (
@@ -53,37 +53,37 @@ export function SocialMedia({
       <div className="flex justify-center space-x-4 md:col-span-1 pt-8">
         {facebook && (
           <a href={facebook} target="_blank" rel="noopener noreferrer">
-            <FaFacebookF className="hover:text-blue-600 text-3xl md:text-4xl lg:text-5xl" />
+            <FaFacebookF className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {instagram && (
           <a href={instagram} target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="hover:text-pink-500 text-3xl md:text-4xl lg:text-5xl" />
+            <FaInstagram className="hover:text-pink-500 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {youtube && (
           <a href={youtube} target="_blank" rel="noopener noreferrer">
-            <FaYoutube className="hover:text-red-500 text-3xl md:text-4xl lg:text-5xl" />
+            <FaYoutube className="hover:text-red-500 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {tiktok && (
           <a href={tiktok} target="_blank" rel="noopener noreferrer">
-            <FaTiktok className="hover:text-purple-600 text-3xl md:text-4xl lg:text-5xl" />
+            <FaTiktok className="hover:text-purple-600 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {pinterest && (
           <a href={pinterest} target="_blank" rel="noopener noreferrer">
-            <FaPinterest className="hover:text-red-500 text-3xl md:text-4xl lg:text-5xl" />
+            <FaPinterest className="hover:text-red-500 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {twitter && (
           <a href={twitter} target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="hover:text-blue-400 text-3xl md:text-4xl lg:text-5xl" />
+            <FaTwitter className="hover:text-blue-400 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {linkedin && (
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="hover:text-blue-700 text-3xl md:text-4xl lg:text-5xl" />
+            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-5xl" />
           </a>
         )}
       </div>

@@ -1,9 +1,9 @@
 import {
-  FaFacebookF,
+  FaFacebook,
   FaTwitter,
   FaInstagram,
   FaYoutube,
-  FaLinkedinIn,
+  FaLinkedin,
   FaPinterest,
   FaTiktok,
 } from 'react-icons/fa';
@@ -35,7 +35,7 @@ export function SocialMedia({
   tagline,
 }: SocialMediaProps) {
   return (
-    <div
+    <Section
       className={`grid grid-cols-1 md:grid-cols-3 px-8 m-6 md:px-16 py-12 bg-notice items-center gap-4 md:my-16 border-primary border-2 rounded-md ${className}`}
     >
       <div className="md:col-span-2 md:border-r-2 md:border-primary">
@@ -53,7 +53,7 @@ export function SocialMedia({
       <div className="flex justify-center align-middle space-x-4 md:col-span-1 pt-8">
         {facebook && (
           <a href={facebook} target="_blank" rel="noopener noreferrer">
-            <FaFacebookF className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
+            <FaFacebook className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {instagram && (
@@ -83,10 +83,10 @@ export function SocialMedia({
         )}
         {linkedin && (
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
+            <FaLinkedin className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
       </div>
-    </div>
+    </Section>
   );
 }

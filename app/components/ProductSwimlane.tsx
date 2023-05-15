@@ -16,7 +16,10 @@ export function ProductSwimlane({
   count?: number;
 }) {
   return (
-    <Section heading={title} padding="y" {...props}>
+    <Section padding="y" {...props}>
+      <h2 className="pl-6 lg:pl-12 text-heading lg:text-display font-bold leading-10 text-primary md:text-3xl max-w-7xl">
+        {title}
+      </h2>
       {tagline && (
         <p className="text-left max-w-7xl text-xl md:text-2xl text-primary/80 mb-4 px-6 sm:px-12">
           {tagline}

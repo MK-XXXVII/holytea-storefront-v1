@@ -1,43 +1,96 @@
 import {Image} from '@shopify/hydrogen';
+import { Section } from './Text';
+
+interface TestimonialCard {
+  fields: {
+    key: string;
+    value: string;
+  }[];
+  field: {
+    value: string;
+    reference: {
+      id: string;
+      image: {
+        altText: string;
+        url: string;
+      };
+    };
+  };
+}
+
+interface TestimonialEdge {
+  node: TestimonialCard;
+}
+
+interface TestimonialData {
+  metaobjects: {
+    edges: TestimonialEdge[];
+  };
+}
+
+// Export TestimonialData interface
+export type {TestimonialData};
 
 interface TestimonialsProps {
-  headline?: string;
+  testimonials: TestimonialData;
+  title?: string;
   tagline?: string;
-  testimonials?: {
-    name: string;
-    testimonial: string;
-    image: string;
-  }[];
-  className?: string;
 }
 
 export function Testimonials({
-  headline,
-  tagline,
   testimonials,
-  className,
+  title,
+  tagline,
 }: TestimonialsProps) {
+  const edges = testimonials.metaobjects?.edges || [];
   return (
-    <div className={`p-4 space-y-4 ${className}`}>
-      {headline && <h1 className="text-3xl text-center">{headline}</h1>}
+    <Section className="mx-auto py-20 px-6 md:px-16">
+      <h2 className="text-heading lg:text-display font-bold leading-10 text-primary md:text-3xl sm:truncate">
+        {title}
+      </h2>
       {tagline && (
-        <h2 className="text-xl text-center text-primary">{tagline}</h2>
+        <p className="text-left text-xl md:text-2xl max-w-7xl text-primary/80 mb-4">
+          {tagline}
+        </p>
       )}
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-4 items-start">
-        {testimonials?.map(({name, testimonial, image}, index) => (
-          <div key={index} className="flex space-x-4 items-start">
-            <Image
-              src={image}
-              alt={`Image of ${name}`}
-              className="w-20 h-20 rounded-full"
-            />
-            <div>
-              <h3 className="text-xl font-semibold">{name}</h3>
-              <p>{testimonial}</p>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-5">
+        {edges.map(({node}) => {
+          // Here we create a map to easily access the fields by key
+          const fieldsMap = node.fields.reduce((acc, field) => {
+            acc[field.key] = field.value;
+            return acc;
+          }, {} as Record<string, string>);
+
+          return (
+            <div
+              key={fieldsMap['name']}
+              className="relative flex items-center space-x-3 rounded-lg border border-primary/50 bg-[#D1F1A3]/70 hover:bg-[#D1F1A3] px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-contrast focus-within:ring-offset-2 hover:border-primary"
+            >
+              <div className="flex-shrink-0">
+                <Image
+                  alt={node.field.reference.image.altText}
+                  data={{
+                    url: node.field.reference.image.url,
+                  }}
+                  className="h-24 w-24 rounded-full"
+                  sizes="(max-width: 600px) 30vw, (max-width: 900px) 50vw, 300px"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="focus:outline-none">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <p className="text-lead font-medium text-primary pb-4">
+                    {fieldsMap['name']}
+                  </p>
+                  <p className="text-fine text-primary/80">
+                    {fieldsMap['testimonial']}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-    </div>
+    </Section>
   );
 }

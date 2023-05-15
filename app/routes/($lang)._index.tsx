@@ -7,6 +7,7 @@ import {
   FeaturedCollections,
   FeaturedArticles,
   SocialMedia,
+  Testimonials,
 } from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
@@ -22,6 +23,7 @@ import type {
 import {AnalyticsPageType} from '@shopify/hydrogen';
 import {routeHeaders, CACHE_SHORT} from '~/data/cache';
 import {type CollectionHero} from '~/components/Hero';
+import {type TestimonialData} from '~/components/Testimonials';
 
 interface HomeSeoData {
   shop: {
@@ -90,6 +92,15 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
+      testimonials: context.storefront.query<TestimonialData>(
+        TESTIMONIALS_QUERY,
+        {
+          variables: {
+            country,
+            language,
+          },
+        },
+      ),
       analytics: {
         pageType: AnalyticsPageType.home,
       },
@@ -104,8 +115,13 @@ export async function loader({params, context}: LoaderArgs) {
 }
 
 export default function Homepage() {
-  const {primaryHero, featuredCollections, featuredProducts, featuredArticles} =
-    useLoaderData<typeof loader>();
+  const {
+    primaryHero,
+    featuredCollections,
+    featuredProducts,
+    featuredArticles,
+    testimonials,
+  } = useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
 
@@ -143,7 +159,7 @@ export default function Homepage() {
               return (
                 <FeaturedCollections
                   collections={collections.nodes as Collection[]}
-                  title="Savor the Spectrum of Flavors with Our Tea Collections"
+                  title="Savor the Spectrum of Flavors with Tea!"
                   tagline="Each of our tea collections holds a unique bouquet of flavors and aromas, carefully crafted to engage your senses and nourish your soul. Explore the robust intensity of our Black Tea, the soothing calm of Green Tea, the earthy richness of Rooibos Tea, the fragrant diversity of Herbal Tea, the pure goodness of Organic Tea, the sun-kissed allure of Mediterranean Tea, the holistic embrace of Wellness Tea, the vibrant charm of Fruit Tea, the elegant subtlety of White Tea, or the refreshing zest of our Homemade Iced Tea. Whatever your preference, we have a blend to make your tea-time truly special."
                 />
               );
@@ -162,6 +178,29 @@ export default function Homepage() {
                   articles={blog.articles.nodes as Article[]}
                   title="Tea Wisdom - An Ode to a Timeless Tradition"
                   tagline="With Holy Tea, you're not just buying tea, you're inheriting a wealth of knowledge. Journey with us through the annals of tea history, uncover brewing secrets, and discover the soulful art of tea appreciation."
+                />
+              );
+            }}
+          </Await>
+        </Suspense>
+      )}
+
+      {testimonials && (
+        <Suspense>
+          <Await resolve={testimonials}>
+            {({metaobjects}) => {
+              if (!metaobjects?.edges) return <></>;
+              return (
+                <Testimonials
+                  testimonials={{
+                    metaobjects: {
+                      edges: metaobjects.edges.map((edge) => ({
+                        node: edge.node,
+                      })),
+                    },
+                  }}
+                  title="Brewed with Love, Savored by Many!"
+                  tagline="Journey with us through the voices of our satisfied customers and experience the love, tradition, and magic that brew in every cup of Holy Tea."
                 />
               );
             }}
@@ -291,6 +330,33 @@ const FEATURED_ARTICLES_QUERY = `#graphql
             width
             height
             url
+          }
+        }
+      }
+    }
+  }
+`;
+
+const TESTIMONIALS_QUERY = `#graphql
+  query testimonialCards($language: LanguageCode, $country: CountryCode) @inContext(language: $language, country: $country) {
+    metaobjects(first: 3, type: "testimonials_card") {
+      edges {
+        node {
+          fields {
+            key
+            value
+          }
+          field(key: "image") {
+            value
+            reference {
+              ... on MediaImage {
+                id
+                image {
+                  altText
+                  url
+                }
+              }
+            }
           }
         }
       }

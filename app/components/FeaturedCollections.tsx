@@ -33,7 +33,10 @@ export function FeaturedCollections({
   const items = collections.filter((item) => item.image).length;
 
   return (
-    <Section {...props} heading={title}>
+    <Section {...props}>
+      <h2 className="text-heading lg:text-display font-bold leading-10 text-primary md:text-3xl sm:truncate">
+        {title}
+      </h2>
       {tagline && (
         <p className="text-left text-xl md:text-2xl max-w-7xl text-primary/80 mb-4">
           {tagline}

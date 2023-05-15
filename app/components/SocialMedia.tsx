@@ -36,11 +36,11 @@ export function SocialMedia({
 }: SocialMediaProps) {
   return (
     <div
-      className={`grid grid-cols-1 md:grid-cols-3 px-4 py-8 bg-notice items-center gap-4 mx-12 border-primary border-2 mb-8 rounded-md ${className}`}
+      className={`grid grid-cols-1 md:grid-cols-3 px-8 m-6 md:px-16 py-12 bg-notice items-center gap-4 md:my-16 border-primary border-2 rounded-md ${className}`}
     >
       <div className="md:col-span-2 md:border-r-2 md:border-primary">
         {headline && (
-          <h1 className="text-heading lg:text-display font-semibold text-primary pb-4">
+          <h1 className="text-heading lg:text-display font-bold text-primary pb-8">
             {headline}
           </h1>
         )}
@@ -50,7 +50,7 @@ export function SocialMedia({
           </h2>
         )}
       </div>
-      <div className="flex justify-center space-x-4 md:col-span-1 pt-8">
+      <div className="flex justify-center align-middle space-x-4 md:col-span-1 pt-8">
         {facebook && (
           <a href={facebook} target="_blank" rel="noopener noreferrer">
             <FaFacebookF className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
@@ -83,7 +83,7 @@ export function SocialMedia({
         )}
         {linkedin && (
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-5xl" />
+            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
       </div>

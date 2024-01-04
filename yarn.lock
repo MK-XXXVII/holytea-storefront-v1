@@ -3007,7 +3007,7 @@
     "@graphql-codegen/add" "^4.0.1"
     "@graphql-codegen/typescript-operations" "^3.0.1"
 
-"@shopify/hydrogen-react@2023.10.1", "@shopify/hydrogen-react@^2023.4.0":
+"@shopify/hydrogen-react@2023.10.1", "@shopify/hydrogen-react@^2023.10.1":
   version "2023.10.1"
   resolved "https://registry.yarnpkg.com/@shopify/hydrogen-react/-/hydrogen-react-2023.10.1.tgz#1cadd386e6b5c082e1d75876f7d89b1bc1be0897"
   integrity sha512-RHyo+Fc1tBUmFTHmKGPFWF2BqDfHHqefv9JHr/j3ovGgJGSefk30zIS1OtQkm6UFj2VPLu3bZJM8chgUQnXJ9w==

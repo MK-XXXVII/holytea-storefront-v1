@@ -1,5 +1,5 @@
 import {Image} from '@shopify/hydrogen';
-import { Section } from './Text';
+import {Section} from './Text';
 
 interface TestimonialCard {
   fields: {
@@ -64,7 +64,11 @@ export function Testimonials({
           return (
             <div
               key={fieldsMap['name']}
-              className="relative flex items-center space-x-3 rounded-lg border border-primary/50 bg-[#D1F1A3]/70 hover:bg-[#D1F1A3] px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-contrast focus-within:ring-offset-2 hover:border-primary"
+              className="
+              relative flex items-center space-x-3 rounded-sm 
+              border border-primary bg-brandPurple/70 hover:bg-primaryGreen
+              p-4 shadow-md focus-within:ring-2 focus-within:ring-contrast 
+              focus-within:ring-offset-2 hover:border-primary"
             >
               <div className="flex-shrink-0">
                 <Image
@@ -79,12 +83,10 @@ export function Testimonials({
               <div className="min-w-0 flex-1">
                 <div className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
-                  <p className="text-lead font-medium text-primary pb-4">
+                  <p className="text-lead font-medium pb-4">
                     {fieldsMap['name']}
                   </p>
-                  <p className="text-fine text-primary/80">
-                    {fieldsMap['testimonial']}
-                  </p>
+                  <p className="text-fine">{fieldsMap['testimonial']}</p>
                 </div>
               </div>
             </div>

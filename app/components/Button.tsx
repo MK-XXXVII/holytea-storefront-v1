@@ -24,12 +24,12 @@ export const Button = forwardRef(
     const Component = props?.to ? Link : as;
 
     const baseButtonClasses =
-      'inline-block rounded-full font-medium text-fine text-center py-2 px-6';
+      'inline-block font-medium text-fine text-lead py-4 px-6';
 
     const variants = {
-      primary: `${baseButtonClasses} bg-[#FF9540] hover:bg-[#D1F1A3] border-2 border-primary text-primary`,
-      secondary: `${baseButtonClasses} border-2 border-primary bg-[#D1F1A3] hover:bg-[#FF9540] text-primary`,
-      inline: 'border-b border-primary/10 leading-none pb-1',
+      primary: `${baseButtonClasses} bg-brandPurple hover:bg-primaryGreen border border-primary text-contrast`,
+      secondary: `${baseButtonClasses} border-2 border-primary bg-primaryGreen hover:bg-brandPurple text-primary hover:text-contrast`,
+      inline: 'border-b border-primary leading-none pb-1',
     };
 
     const widths = {

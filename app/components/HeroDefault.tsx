@@ -15,7 +15,7 @@ export interface CollectionHero {
   handle: string;
   heading: Metafield;
   height?: 'full';
-  loading?: 'eager' | 'lazy';
+  loading?: '' | 'lazy';
   spread: Metafield;
   spreadSecondary: Metafield;
   top?: boolean;

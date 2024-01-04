@@ -579,9 +579,7 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 `;
 
-const PRODUCT_QUERY = `#graphql
-  ${MEDIA_FRAGMENT}
-  ${PRODUCT_VARIANT_FRAGMENT}
+const PRODUCT_QUERY = `#graphql${MEDIA_FRAGMENT}${PRODUCT_VARIANT_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode

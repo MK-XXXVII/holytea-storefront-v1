@@ -27,9 +27,9 @@ export function MobileHeader({
       role="banner"
       className={`${
         isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-notice/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+          ? 'bg-primary/60 dark:bg-primaryGreen/60 text-primary dark:text-primary shadow-darkHeader'
+          : 'bg-brandPurple/60 text-primary dark:text-primary shadow-darkHeader'
+      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-2 px-4 md:px-8 py-4 md:py-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button

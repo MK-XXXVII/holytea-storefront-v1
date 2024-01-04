@@ -37,7 +37,7 @@ export function AddToCartButton({
         as="button"
         type="submit"
         width={width}
-        variant={variant}
+        variant="secondary"
         className={className}
         disabled={disabled ?? fetcherIsNotIdle}
         {...props}

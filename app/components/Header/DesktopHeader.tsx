@@ -33,15 +33,18 @@ export function DesktopHeader({
       role="banner"
       className={`${
         isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-notice/80 text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-4`}
+          ? 'bg-brandPurple/80 dark:bg-brandPurple/80 text-contrast dark:text-primary shadow-darkHeader'
+          : 'bg-brandPurple/80 text-contrast dark:text-primary shadow-lightHeader'
+      } ${!isHome && y > 500 && ' shadow-lightHeader'} 
+      hidden h-nav lg:flex items-center sticky transition 
+      duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full 
+      leading-none gap-8 px-12 py-4`}
     >
       <div className="flex gap-12">
         <Link
-          className="font-bold text-2xl uppercase tracking-tighter inline-flex items-center"
+          className="
+          font-bold text-2xl uppercase tracking-tighter 
+          inline-flex items-center"
           to="/"
           prefetch="intent"
         >
@@ -57,7 +60,7 @@ export function DesktopHeader({
                 className="relative inline-block justify-center text-left"
                 key={item.id}
               >
-                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-[#FF9540] px-3 py-1 text-sm font-semibold text-primary shadow-sm ring-1 ring-inset ring-contrast hover:bg-contrast">
+                <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-contrast px-3 py-1 text-sm font-semibold text-primary shadow-sm ring-1 ring-inset ring-contrast hover:bg-contrast">
                   {item.title}
                   <ChevronDownIcon
                     className="-mr-1 h-5 w-5 text-primary"

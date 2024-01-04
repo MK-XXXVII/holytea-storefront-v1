@@ -22,38 +22,39 @@ interface SocialMediaProps {
   tagline?: string;
 }
 
-export function SocialMedia({
-  facebook,
-  twitter,
-  instagram,
-  tiktok,
-  pinterest,
-  youtube,
-  linkedin,
-  className,
-  headline,
-  tagline,
-}: SocialMediaProps) {
+const socialMedia = [
+  {name: 'facebook', IconComponent: FaFacebookF, hoverColor: 'text-blue-600'},
+  {name: 'instagram', IconComponent: FaInstagram, hoverColor: 'text-pink-500'},
+  {name: 'youtube', IconComponent: FaYoutube, hoverColor: 'text-red-500'},
+  {name: 'tiktok', IconComponent: FaTiktok, hoverColor: 'text-purple-600'},
+  {name: 'pinterest', IconComponent: FaPinterest, hoverColor: 'text-red-500'},
+  {name: 'twitter', IconComponent: FaTwitter, hoverColor: 'text-blue-400'},
+  {name: 'linkedin', IconComponent: FaLinkedinIn, hoverColor: 'text-blue-700'},
+];
+
+export function SocialMedia(props: SocialMediaProps) {
+  const classNames = `grid grid-cols-1 md:grid-cols-3 px-8 mx-6 md:mx-12 md:px-12 py-12 bg-brandPurple items-center gap-4 md:my-16 border-primary border-2 rounded-sm ${props.className}`;
+
   return (
-    <Section
-      className={`grid grid-cols-1 md:grid-cols-3 px-8 m-6 md:px-16 py-12 bg-notice items-center gap-4 md:my-16 border-primary border-2 rounded-md ${className}`}
+    <div
+      className={`grid grid-cols-1 md:grid-cols-3 px-8 m-6 md:px-16 py-12 bg-notice items-center gap-4 md:my-16 border-primary border-2 rounded-md ${classNames}`}
     >
       <div className="md:col-span-2 md:border-r-2 md:border-primary">
-        {headline && (
+        {props.headline && (
           <h1 className="text-heading lg:text-display font-bold text-primary pb-8">
-            {headline}
+            {props.headline}
           </h1>
         )}
-        {tagline && (
+        {props.tagline && (
           <h2 className="text-copy lg:text-lead text-primary pb-4">
-            {tagline}
+            {props.tagline}
           </h2>
         )}
       </div>
       <div className="flex justify-center align-middle space-x-4 md:col-span-1 pt-8">
         {facebook && (
           <a href={facebook} target="_blank" rel="noopener noreferrer">
-            <FaFacebook className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
+            <FaFacebookF className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
         {instagram && (
@@ -83,7 +84,7 @@ export function SocialMedia({
         )}
         {linkedin && (
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
+            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
           </a>
         )}
       </div>

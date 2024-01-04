@@ -14,10 +14,9 @@ export interface CollectionHero {
   cta: Metafield;
   handle: string;
   heading: Metafield;
-  height?: 'full';
+  height?: 'full' | 'half';
   loading?: 'eager' | 'lazy';
   spread: Metafield;
-  spreadSecondary: Metafield;
   top?: boolean;
 }
 
@@ -32,47 +31,38 @@ export function Hero({
   height,
   loading,
   spread,
-  spreadSecondary,
   top,
 }: SerializeFrom<CollectionHero>) {
   return (
     <Link to={`/collections/${handle}`}>
       <section
         className={clsx(
-          'relative justify-end flex flex-col w-full',
+          'relative justify-end flex flex-col w-full max-h-[50%]',
           top && '-mt-nav',
-          height === 'full'
+          height === 'half' && 'h-[50vh]'
             ? 'h-screen'
-            : 'aspect-[4/5] sm:aspect-square md:aspect-[5/4] lg:aspect-[3/2] xl:aspect-[2/1]',
+            : 'aspect-[4/6] sm:aspect-square md:aspect-[5/4] lg:aspect-[3/2] xl:aspect-[5/2]',
         )}
       >
         <div className="absolute inset-0 grid flex-grow grid-flow-col pointer-events-none auto-cols-fr -z-10 content-stretch overflow-clip">
           {spread?.reference && (
             <div>
               <SpreadMedia
-                sizes={
-                  spreadSecondary?.reference
-                    ? '(min-width: 48em) 50vw, 100vw'
-                    : '100vw'
-                }
+                sizes="50vh"
                 data={spread.reference as Media}
                 loading={loading}
               />
             </div>
           )}
-          {spreadSecondary?.reference && (
-            <div className="hidden md:block">
-              <SpreadMedia
-                sizes="50vw"
-                data={spreadSecondary.reference as Media}
-                loading={loading}
-              />
-            </div>
-          )}
         </div>
-        <div className="flex flex-col bg-primary/70 items-start max-w-fit justify-between gap-8 px-6 py-8 sm:px-12 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
+        <div
+          className="
+        flex flex-col bg-contrast/50 items-start max-w-fit 
+        justify-between gap-8 px-6 py-12 sm:px-12 md:px-12 
+        bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast"
+        >
           {heading?.value && (
-            <Heading format as="h2" size="heading" className="max-w-xl">
+            <Heading format as="h2" size="display" className="max-w-xl">
               {heading.value}
             </Heading>
           )}
@@ -84,7 +74,7 @@ export function Hero({
           {cta?.value && (
             <Text
               size="copy"
-              className="border px-4 py-2 rounded-full hover:bg-notice hover:text-primary hover:border-primary animate-bounce"
+              className="border border-primary px-4 py-2 bg-primaryGreen hover:bg-brandPurple hover:text-contrast hover:border-primary animate-bounce"
             >
               {cta.value}
             </Text>

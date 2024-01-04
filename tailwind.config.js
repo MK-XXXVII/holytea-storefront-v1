@@ -17,8 +17,12 @@ export default {
     extend: {
       colors: {
         primary: withOpacityValue('--color-primary'),
+        secondary: withOpacityValue('--color-secondary'),
+        primaryGreen: withOpacityValue('--color-primaryGreen'),
         contrast: withOpacityValue('--color-contrast'),
         notice: withOpacityValue('--color-accent'),
+        accentDark: withOpacityValue('--color-accentDark'),
+        brandPurple: withOpacityValue('--color-brandPurple'),
         shopPay: 'var(--color-shop-pay)',
       },
       screens: {

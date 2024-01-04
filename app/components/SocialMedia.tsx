@@ -17,76 +17,56 @@ interface SocialMediaProps {
   linkedin?: string;
   tiktok?: string;
   pinterest?: string;
-  className?: string;
   headline?: string;
   tagline?: string;
 }
 
 const socialMedia = [
-  {name: 'facebook', IconComponent: FaFacebookF, hoverColor: 'text-blue-600'},
+  {name: 'facebook', IconComponent: FaFacebook, hoverColor: 'text-blue-600'},
   {name: 'instagram', IconComponent: FaInstagram, hoverColor: 'text-pink-500'},
   {name: 'youtube', IconComponent: FaYoutube, hoverColor: 'text-red-500'},
   {name: 'tiktok', IconComponent: FaTiktok, hoverColor: 'text-purple-600'},
   {name: 'pinterest', IconComponent: FaPinterest, hoverColor: 'text-red-500'},
   {name: 'twitter', IconComponent: FaTwitter, hoverColor: 'text-blue-400'},
-  {name: 'linkedin', IconComponent: FaLinkedinIn, hoverColor: 'text-blue-700'},
+  {name: 'linkedin', IconComponent: FaLinkedin, hoverColor: 'text-blue-700'},
 ];
 
 export function SocialMedia(props: SocialMediaProps) {
-  const classNames = `grid grid-cols-1 md:grid-cols-3 px-8 mx-6 md:mx-12 md:px-12 py-12 bg-brandPurple items-center gap-4 md:my-16 border-primary border-2 rounded-sm ${props.className}`;
+  const {headline, tagline} = props;
 
   return (
-    <div
-      className={`grid grid-cols-1 md:grid-cols-3 px-8 m-6 md:px-16 py-12 bg-notice items-center gap-4 md:my-16 border-primary border-2 rounded-md ${classNames}`}
-    >
-      <div className="md:col-span-2 md:border-r-2 md:border-primary">
-        {props.headline && (
-          <h1 className="text-heading lg:text-display font-bold text-primary pb-8">
-            {props.headline}
-          </h1>
-        )}
-        {props.tagline && (
-          <h2 className="text-copy lg:text-lead text-primary pb-4">
-            {props.tagline}
-          </h2>
-        )}
-      </div>
-      <div className="flex justify-center align-middle space-x-4 md:col-span-1 pt-8">
-        {facebook && (
-          <a href={facebook} target="_blank" rel="noopener noreferrer">
-            <FaFacebookF className="hover:text-blue-600 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {instagram && (
-          <a href={instagram} target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="hover:text-pink-500 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {youtube && (
-          <a href={youtube} target="_blank" rel="noopener noreferrer">
-            <FaYoutube className="hover:text-red-500 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {tiktok && (
-          <a href={tiktok} target="_blank" rel="noopener noreferrer">
-            <FaTiktok className="hover:text-purple-600 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {pinterest && (
-          <a href={pinterest} target="_blank" rel="noopener noreferrer">
-            <FaPinterest className="hover:text-red-500 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {twitter && (
-          <a href={twitter} target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="hover:text-blue-400 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
-        {linkedin && (
-          <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="hover:text-blue-700 text-2xl md:text-3xl lg:text-4xl" />
-          </a>
-        )}
+    <Section className="mx-auto py-5 sm:py-20 px-2 sm:px-6 md:px-16">
+      <h2 className="text-center text-title sm:text-heading lg:text-display font-bold leading-3 sm:leading-10 text-primary/90 sm:truncate">
+        {headline}
+      </h2>
+      {tagline && (
+        <p className="text-center text-base sm:text-xl md:text-2xl max-w-full sm:max-w-7xl text-primary/80 mb-4">
+          {tagline}
+        </p>
+      )}
+      <div className="flex flex-wrap justify-center sm:space-x-5 mt-5">
+        {socialMedia.map(({name, IconComponent}) => {
+          if (!(props as any)[name]) return null;
+          const link = (props as any)[name];
+          return (
+            <div
+              key={name}
+              className="
+              relative flex items-left justify-center rounded-lg 
+              border border-primary bg-brandPurple/70 hover:bg-primaryGreen
+              p-2 sm:p-4 shadow-md focus-within:ring-2 focus-within:ring-contrast 
+              focus-within:ring-offset-2 hover:border-primary m-2 sm:m-0"
+            >
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                <IconComponent
+                  className={`hover:${
+                    socialMedia.find((item) => item.name === name)?.hoverColor
+                  } text-xl sm:text-2xl md:text-3xl lg:text-4xl`}
+                />
+              </a>
+            </div>
+          );
+        })}
       </div>
     </Section>
   );

@@ -325,7 +325,7 @@ export function ProductForm() {
             {!isOutOfStock && (
               <ShopPayButton
                 width="100%"
-                className="rounded-full"
+                className="rounded-sm"
                 variantIds={[selectedVariant?.id!]}
                 storeDomain={storeDomain}
               />
@@ -357,7 +357,7 @@ function ProductOptions({
             <Heading as="legend" size="lead" className="min-w-[4rem] mb-8">
               {option.name}
             </Heading>
-            <div className="flex flex-wrap items-baseline gap-3 mb-8 lg:mb-12">
+            <div className="flex flex-wrap items-baseline gap-2 gap-y-6 mb-8 lg:mb-12">
               {/**
                * First, we render a bunch of <Link> elements for each option value.
                * When the user clicks one of these buttons, it will hit the loader
@@ -387,7 +387,7 @@ function ProductOptions({
                         </Listbox.Button>
                         <Listbox.Options
                           className={clsx(
-                            'border-primary bg-contrast absolute bottom-12 z-30 grid h-48 w-full overflow-y-scroll rounded-t border px-2 py-2 transition-[max-height] duration-150 sm:bottom-auto md:rounded-b md:rounded-t-none md:border-t-0 md:border-b',
+                            'border-primary bg-contrast absolute bottom-8 z-30 grid h-48 w-full overflow-y-scroll rounded-t border px-2 py-2 transition-[max-height] duration-150 sm:bottom-auto md:rounded-b md:rounded-t-none md:border-t-0 md:border-b',
                             open ? 'max-h-48' : 'max-h-0',
                           )}
                         >
@@ -440,7 +440,7 @@ function ProductOptions({
                           optionValue={value}
                           searchParams={searchParamsWithDefaults}
                           className={clsx(
-                            'leading-none text-fine font-semibold py-1 px-4 border-2 rounded-full cursor-pointer transition-all duration-200',
+                            'leading-none text-copy font-normal py-2 px-6 border rounded-full cursor-pointer transition-all duration-200',
                             checked
                               ? 'border-primary bg-notice'
                               : 'border-primary/50 bg-notice/50',

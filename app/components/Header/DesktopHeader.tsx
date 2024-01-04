@@ -76,7 +76,11 @@ export function DesktopHeader({
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-notice shadow-lg ring-1 ring-primary ring-opacity-5 focus:outline-none">
+                  <Menu.Items
+                    className="
+                  absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md 
+                  bg-brandPurple shadow-lg ring-1 ring-primary ring-opacity-5 focus:outline-none"
+                  >
                     <div className="py-1">
                       {item.items.map((child) => (
                         <Menu.Item key={child.id}>
@@ -87,7 +91,7 @@ export function DesktopHeader({
                               prefetch="intent"
                               className={classNames(
                                 active
-                                  ? 'bg-[#FF9540] text-primary'
+                                  ? 'bg-primaryGreen text-primary'
                                   : 'text-primary',
                                 'block px-4 py-2 text-sm',
                               )}
